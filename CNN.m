@@ -15,11 +15,9 @@ numImagesPerClass = 29; % Choisissez le nombre d'images par classe que vous souh
 [imdsTrain, imdsValidation] = splitEachLabel(imds, numImagesPerClass, 'randomized');
 
 % Redimensionner et normaliser les images
-imageSize = [226 226 1]; 
+imageSize = [256 256 1]; 
 imdsTrain.ReadFcn = @(filename)imresize(imread(filename), imageSize(1:2))/255;
 imdsValidation.ReadFcn = @(filename)imresize(imread(filename), imageSize(1:2))/255;
-
-
 
 % Définir l'architecture du CNN
 layers = [
@@ -53,7 +51,7 @@ layers = [
 % Spécifier les options d'entraînement
 options = trainingOptions('adam', ...
     'InitialLearnRate', 0.001, ...
-    'MaxEpochs', 20, ...
+    'MaxEpochs', 2, ...
     'MiniBatchSize', 64, ...
     'ValidationData', imdsValidation, ...
     'ValidationFrequency', 30, ...
@@ -72,5 +70,12 @@ YValidation = imdsValidation.Labels;
 accuracy = sum(YPred == YValidation) / numel(YValidation); % Calculer l'exactitude
 disp(['Validation accuracy: ', num2str(accuracy)]);
 
+% Afficher la matrice de confusion avec des détails
+confMat = confusionmat(YValidation, YPred);
+confusionChart = confusionchart(YValidation, YPred, 'Title', 'Confusion Matrix', ...
+    'RowSummary', 'row-normalized', 'ColumnSummary', 'column-normalized');
+disp('Confusion Matrix:');
+disp(confMat);
+
 % Enregistrer le modèle
-save('modele_emotions.mat', 'net');
+save('modele_emotions_jaffe.mat', 'net');
