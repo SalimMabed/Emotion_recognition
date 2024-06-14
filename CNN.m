@@ -9,7 +9,7 @@ labelCount = countEachLabel(imds);
 disp(labelCount);
 
 % Nombre d'images à conserver par classe
-numImagesPerClass = 29; % Choisissez le nombre d'images par classe que vous souhaitez garder
+numImagesPerClass = 25; % Choisissez le nombre d'images par classe que vous souhaitez garder
 
 % Diviser les données en ensembles d'entraînement (80%) et de validation (20%) avec le même nombre d'images par classe
 [imdsTrain, imdsValidation] = splitEachLabel(imds, numImagesPerClass, 'randomized');

@@ -51,7 +51,7 @@ function emotion_recognition_gui
     global running;
 
     % Charger le modèle pré-entraîné
-    load('modele_emotions.mat');
+    load('modele_emotions_jaffe.mat');
 
     % Drapeau pour indiquer si l'application est en cours d'exécution
     running = true;
@@ -83,14 +83,14 @@ function emotion_recognition_gui
         end
 
         % Redimensionner l'image
-        imageSize = [226 226];
+        imageSize = [256 256];
         img_resized = resizeImageWithAspect(img_gray, imageSize);
 
         % Normaliser l'image
         img_normalized = double(img_resized) / 255;
 
         % Adapter la taille de l'image pour le réseau
-        img_normalized = reshape(img_normalized, [226 226 1]);
+        img_normalized = reshape(img_normalized, [256 256 1]);
 
         % Classification de l'image et obtention des probabilités
         [YPred, scores] = classify(net, img_normalized);
