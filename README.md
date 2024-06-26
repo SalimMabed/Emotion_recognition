@@ -1,3 +1,2 @@
-# Emotion_recognition
-This repository contains an implementation of emotion recognition using convolutional neural networks (CNN) in Matlab using the jaffe dataset
-, By Salim MABED
+#Emotion Recognition
+This project uses Convolutional Neural Networks (CNN) to recognize emotions from images. It includes several scripts to organize images by emotion (data_clean.m), train a CNN model (CNN.m), visualize convolution filters (conv.m), and test the model with a graphical user interface (real_test.m). This project facilitates automatic emotion recognition from images using MATLAB.
