@@ -1,3 +1,5 @@
+
+
 % Définir le répertoire contenant les dossiers de classe
 dataDir = 'C:\Users\pc\Desktop\Emotion_recognition';
 
